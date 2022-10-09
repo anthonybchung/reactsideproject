@@ -7,23 +7,18 @@ function App() {
       x: 100,
       y: 100,
       radius: 350,
-      color: 'red',
-    },
-    {
-      x: 200,
-      y: 200,
-      radius: 200,
       color: 'blue',
     },
     {
-      x: 300,
-      y: 300,
+      x: 250,
+      y: 250,
       radius: 50,
       color: 'black',
     },
   ];
+
   return (
-    <div>
+    <div style={{ position: 'static' }}>
       <RingContainer ringArray={ringArray} />
     </div>
   );

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 const Ring = ({ ringAttributes, mousePosition }) => {
-  // default style
   const defaultStyle = {
     position: 'absolute',
     width: 100,
@@ -10,27 +9,44 @@ const Ring = ({ ringAttributes, mousePosition }) => {
     marginLeft: 50,
     borderStyle: 'solid',
     borderRadius: 50,
-    borderWidth: 3,
+    borderWidth: 2,
     borderColor: 'red',
     opacity: 1,
   };
 
-  //style in state.
-  const [ringAttr, setRingAttr] = useState(defaultStyle);
+  const [ring, setRing] = useState(defaultStyle);
 
+  //component didmount.
   useEffect(() => {
-    setRingAttr({
-      ...ringAttr,
-      width: ringAttributes.radius * 2,
-      height: ringAttributes.radius * 2,
-      marginTop: ringAttributes.y - ringAttributes.radius,
-      marginLeft: ringAttributes.x - ringAttributes.radius,
-      borderRadius: ringAttributes.radius,
-      borderColor: ringAttributes.color,
-    });
-  }, []);
+    const mTop = ringAttributes.y - ringAttributes.radius;
+    const mLeft = ringAttributes.x - ringAttributes.radius;
+    const side = ringAttributes.radius * 2;
 
-  return <div style={ringAttr}></div>;
+    const opacityRatio = () => {
+      const x1 = ringAttributes.x;
+      const y1 = ringAttributes.y;
+      const x2 = mousePosition.x;
+      const y2 = mousePosition.y;
+
+      const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+      const ratio = ringAttributes.radius / distance;
+      if (!ratio) return 0;
+      return ratio > 1 ? 1 : ratio;
+    };
+
+    setRing({
+      ...ring,
+      marginLeft: mLeft,
+      marginTop: mTop,
+      width: side,
+      height: side,
+      borderColor: ringAttributes.color,
+      borderRadius: ringAttributes.radius,
+      opacity: opacityRatio(),
+    });
+  }, [mousePosition.x, mousePosition.y]);
+
+  return <div style={ring}></div>;
 };
 
 export default Ring;
