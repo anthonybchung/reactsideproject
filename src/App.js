@@ -15,11 +15,20 @@ function App() {
       radius: 50,
       color: 'black',
     },
+    {
+      x: 40,
+      y: 10,
+      radius: 30,
+      color: 'red',
+    },
   ];
 
   return (
-    <div style={{ position: 'static' }}>
+    <div>
       <RingContainer ringArray={ringArray} />
+      <div style={{ zIndex: 10, position: 'absolute' }}>
+        <h1>hello world</h1>
+      </div>
     </div>
   );
 }

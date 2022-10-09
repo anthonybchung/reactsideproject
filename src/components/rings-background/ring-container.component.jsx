@@ -7,13 +7,13 @@ const RingContainer = ({ ringArray }) => {
   const ringContainerStyle = {
     position: 'absolute',
     width: '100%',
-    height: '100vh',
+    height: '150%',
     marginTop: 0,
     marginLeft: 0,
-    zIndex: 1,
-    backgroundColor: 'orange',
-    overflowX: 'hidden',
-    overflowY: 'hidden',
+    zIndex: 0,
+
+    // overflowX: 'hidden',
+    // overflowY: 'hidden',
   };
 
   // mouse Position.
