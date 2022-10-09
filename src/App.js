@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import RingContainer from './components/rings-background/ring-container.component';
 
 function App() {
+  const ringArray = [
+    {
+      x: 100,
+      y: 100,
+      radius: 350,
+      color: 'red',
+    },
+    {
+      x: 200,
+      y: 200,
+      radius: 200,
+      color: 'blue',
+    },
+    {
+      x: 300,
+      y: 300,
+      radius: 50,
+      color: 'black',
+    },
+  ];
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <RingContainer ringArray={ringArray} />
     </div>
   );
 }
