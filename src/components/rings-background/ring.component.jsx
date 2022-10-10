@@ -15,6 +15,7 @@ const Ring = ({ ringAttributes, mousePosition }) => {
   };
 
   const [ring, setRing] = useState(defaultStyle);
+  const [ratio, setRatio] = useState(0.5);
 
   //component didmount.
   useEffect(() => {
@@ -30,8 +31,11 @@ const Ring = ({ ringAttributes, mousePosition }) => {
 
       const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
       const ratio = ringAttributes.radius / distance;
+
+      const innerRatio = distance / ringAttributes.radius;
+
       if (!ratio) return 0;
-      return ratio > 1 ? 1 : ratio;
+      return ratio > 1 ? innerRatio : ratio;
     };
 
     setRing({

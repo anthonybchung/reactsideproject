@@ -16,9 +16,9 @@ function App() {
       color: 'black',
     },
     {
-      x: 40,
-      y: 10,
-      radius: 30,
+      x: 400,
+      y: 510,
+      radius: 300,
       color: 'red',
     },
   ];
@@ -26,7 +26,7 @@ function App() {
   return (
     <div>
       <RingContainer ringArray={ringArray} />
-      <div style={{ zIndex: 10, position: 'absolute' }}>
+      <div style={{ position: 'absolute' }}>
         <h1>hello world</h1>
       </div>
     </div>
